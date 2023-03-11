@@ -7,6 +7,16 @@
     <title>Awesome Calculator</title>
     <link rel="stylesheet" href="index.css">
     <link rel="icon" href="./assets/icon-192.png">
+    <script>
+      if ('serviceWorker' in nagivator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js');
+        });
+      }
+    </script>
+
+
+
 </head>
 
 <body>
