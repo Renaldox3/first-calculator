@@ -1,6 +1,6 @@
 const display = document.querySelector('.display')
 const controlButtons = document.querySelector('.controls').children
-const allSymbols = ['+', '-', '/', 'X', 'AC', '%', '=']
+const allSymbols = ['+', '-', '/', 'X', 'AC', 'MAX', '=']
 const signSymbol = ['+/-']
 
 let firstValue = ''
@@ -16,7 +16,7 @@ const calculate = () => {
     if (symbol === '-') result = firstValue - secondValue
     if (symbol === 'X') result = firstValue * secondValue
     if (symbol === '/') result = firstValue / secondValue
-    if (symbol === '%') result = firstValue % secondValue
+    if (symbol === 'MAX') result = firstValue + (secondValue*firstValue*0.03)
 
     display.innerText = result
     firstValue = result
@@ -33,6 +33,7 @@ for (let button of controlButtons) {
         if (btnValue === 'AC') {
             firstValue = ''
             secondValue = ''
+            symbol = ''
             return display.innerText = ''
         }
 
@@ -44,15 +45,7 @@ for (let button of controlButtons) {
         else if (!symbol) firstValue += btnValue
         else if (symbol) secondValue += btnValue
 
-        if (btnValue !== '=' && btnValue !== '+/-') display.innerText += btnValue
-      /*  if (btnValue === '+/-' && !symbol) {
-            firstValue *= -1 
-            display.innerText *= -1
-        }
-        if (btnValue === '+/-' && symbol) {
-            secondValue *= -1
-            display.innerText *= -1
-        } */
+        if (btnValue !== '=') display.innerText += btnValue
     })
 }
 
